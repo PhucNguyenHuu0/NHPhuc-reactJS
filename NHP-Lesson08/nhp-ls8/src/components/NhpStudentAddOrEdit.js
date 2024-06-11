@@ -42,6 +42,19 @@ export default function NhpStudentAddOrEdit({nhpOnSubmit, StudentEdit, isEdit}) 
                 <label> age</label>
                 <input name='nhp_age' value={nhpStudent.nhp_age} onChange={nhpHandleChange}/>
             </div>
+            <div className="form-group mb-3">
+            <label>Hoạt động:</label>
+            <div className="form-check">
+              <input
+                type="checkbox"
+                name='nhp_IsActive'
+                checked={nhpStudent.nhp_IsActive}
+                onChange={nhpHandleChange}
+                className="form-check-input"
+              />
+              <label className="form-check-label">Active</label>
+            </div>
+          </div>
             <button onClick={nhpHandleSubmit}>{isEdit ? 'Update' : 'Add'}</button>
         </form>
     </div>

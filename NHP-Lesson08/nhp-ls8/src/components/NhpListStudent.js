@@ -12,6 +12,14 @@ export default function NhpListStudent({renderNhpListStudents, removeItem, editI
                     <td>{Student.nhp_Id}</td>
                     <td>{Student.nhp_StudentName}</td>
                     <td>{Student.nhp_age}</td>
+                
+                    <td>
+                        <input
+                            type="checkbox"
+                            checked={Student.nhp_IsActive}
+                            readOnly
+                        />
+                    </td>
                     <td>
                         <button className='btn btn-success' onClick={() => editItem(Student)}>Edit</button>
                         <button className='btn btn-danger' onClick={() => removeItem(Student.nhp_Id)}>Remove</button>
@@ -32,7 +40,8 @@ export default function NhpListStudent({renderNhpListStudents, removeItem, editI
                         <th>Student ID</th>
                         <th>Student Name</th>
                         <th>Student age</th>
-                        <th></th>
+                        <th>active</th>
+                        
                     </tr>
             </thead>
 

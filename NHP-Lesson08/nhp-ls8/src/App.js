@@ -5,16 +5,17 @@ import NhpStudentAddOrEdit from './components/NhpStudentAddOrEdit';
 
 function App() {
   const nhp_listStudents = [
-    { nhp_Id:2210900119, nhp_StudentName:"nguyen huu phuc", nhp_age:21},
-    { nhp_Id:1, nhp_StudentName:"Le Tinh Tinh", nhp_age:19},
-    { nhp_Id:2, nhp_StudentName:"Duong Hao Hoa",nhp_age:18},
-    { nhp_Id:3, nhp_StudentName:"Nguyen Trung Quoa",nhp_age:19},
-    { nhp_Id:4, nhp_StudentName:"Dao Linh Tinh",nhp_age:19},
+    { nhp_Id:2210900119, nhp_StudentName:"nguyen huu phuc", nhp_age:21,IsActive:true},
+    { nhp_Id:1, nhp_StudentName:"Le Tinh Tinh", nhp_age:19,nhp_IsActive:true},
+    { nhp_Id:2, nhp_StudentName:"Duong Hao Hoa",nhp_age:18,nhp_IsActive:true},
+    { nhp_Id:3, nhp_StudentName:"Nguyen Trung Quoa",nhp_age:19,nhp_IsActive:true},
+    { nhp_Id:4, nhp_StudentName:"Dao Linh Tinh",nhp_age:19,nhp_IsActive:true},
    ];
    const nhpStudentObj = { 
     nhp_Id: 0,
     nhp_StudentName:"",
     nhp_age:"",
+    IsActive:"",
 }
    // su dung hang useState de luu tru trang thai du lieu
    const [nhpListStudent, setNhpListStudent] = useState(nhp_listStudents);
