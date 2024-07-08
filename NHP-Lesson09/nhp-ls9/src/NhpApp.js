@@ -14,6 +14,7 @@ function NhpApp() {
     Phone: '',
     id: 0,
   });
+  
 
   // Fetch all users from the API
   const nhpGetAllUsers = async () => {
@@ -28,6 +29,7 @@ function NhpApp() {
   useEffect(() => {
     nhpGetAllUsers();
   }, []);
+
 
   // Handle adding a new user
   const nhpHandleAddNew = () => {

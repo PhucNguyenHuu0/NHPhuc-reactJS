@@ -2,6 +2,7 @@ import axios from '../api/NhpApi'
 import React, { useEffect, useState } from 'react'
 
 export default function NhpFormAddOrEdit({ onNhpClose, onNhpSubmitForm, renderUsers, isNew }) {
+    console.log(renderUsers);
     const [nhpId, setNhpId] = useState(0);
     const [nhpUserName, setNhpUserName] = useState("");
     const [nhpPassword, setNhpPassword] = useState("");
