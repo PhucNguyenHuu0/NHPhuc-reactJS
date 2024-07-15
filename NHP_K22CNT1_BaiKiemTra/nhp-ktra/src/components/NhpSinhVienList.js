@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from '../Api/nhpapi'
 
-export default function NhpSinhVienList({ renderNhpSinhVienList, onNhpDelete  }) {
+export default function NhpSinhVienList({ renderNhpSinhVienList, onNhpDelete, removeItem, editItem }) {
     console.log("NhpSinhVienList:", renderNhpSinhVienList);
 
 
@@ -10,12 +10,17 @@ export default function NhpSinhVienList({ renderNhpSinhVienList, onNhpDelete  })
         return <div>No data available</div>;
     }
     
-    const NhpHandleDelete = async (param) => {
-        if(window.confirm("Ban co muon xoa khong?")){
-            const nhpRes = axios.delete("NhpSinhVien/"+param.MaSV);
+    const nhpHandleDelete = async (MaSV) => {
+        if (window.confirm("Ban co muon xoa khong?")) {
+            try {
+                await axios.delete(`NhpSinhVien/${MaSV}`);
+                onNhpDelete(); // Notify the parent component about the deletion
+            } catch (error) {
+                console.error('Error deleting student:', error);
+            }
         }
-        onNhpDelete();
     }
+   
     // Render the list of users
     let nhpElementStudent = renderNhpSinhVienList.map((NhpSinhVien, index) => {
         return (
@@ -31,8 +36,8 @@ export default function NhpSinhVienList({ renderNhpSinhVienList, onNhpDelete  })
                     <td>{NhpSinhVien.NhpHocBong}</td>
                     <td>{NhpSinhVien.NhpDiemTrungBinh}</td>
                     <td>
-                        <button className='btn btn-success'>Edit</button>
-                        <button className='btn btn-danger' onClick={NhpHandleDelete}>Remove</button>
+                    <button className='btn btn-success' onClick={() => editItem(NhpSinhVien)}>Edit</button>
+                    <button className='btn btn-danger' onClick={() => removeItem(NhpSinhVien.NhpMaSV)}>Remove</button>
                     </td>
                 </tr>
             </>
@@ -43,6 +48,7 @@ export default function NhpSinhVienList({ renderNhpSinhVienList, onNhpDelete  })
 
     return (
         <div className='row'>
+            <h2>Danh sach SinhVien</h2>
             <div className='col-md-12'>
                 <table className='table table-bordered'>
                     <thead>

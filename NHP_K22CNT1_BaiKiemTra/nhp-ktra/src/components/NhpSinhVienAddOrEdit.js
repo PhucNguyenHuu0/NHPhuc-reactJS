@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from '../Api/nhpapi'
 
 
-export default function NhpSinhVienAddOrEdit(onNhpClose, onNhpSubmitForm, renderStudent) {
+export default function NhpSinhVienAddOrEdit({onNhpClose, onNhpSubmitForm, renderStudent, isEdit}) {
     console.log(renderStudent);
     const [nhpMaSV, setNhpMaSV] = useState(0);
     const [nhpHoSV, setNhpHoSV] = useState("");
@@ -35,7 +35,7 @@ export default function NhpSinhVienAddOrEdit(onNhpClose, onNhpSubmitForm, render
         event.preventDefault();
         console.log(nhpMaSV, nhpHoSV, nhpTenSV, nhpPhai, nhpNgaySinh, nhpNoiSinh, nhpMaKH, nhpHocBong, nhpDiemTrungBinh);
         let NhpObjectStudent = {
-            id: nhpMaSV,
+            MaSV: nhpMaSV,
             HoSV: nhpHoSV,
             TenSV: nhpTenSV,
             Phai: nhpPhai,
@@ -49,6 +49,9 @@ export default function NhpSinhVienAddOrEdit(onNhpClose, onNhpSubmitForm, render
         onNhpSubmitForm(false);
     }
     return (
+       <div>
+         <h2>{isEdit ? 'Update Student' : 'Them moi Student'}</h2>
+        <form>
         <div className='border'>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="MaSV">MaSV</span>
@@ -103,6 +106,9 @@ export default function NhpSinhVienAddOrEdit(onNhpClose, onNhpSubmitForm, render
             
             <button className='btn btn-primary' name='btnNhpSave' onClick={(ev) => nhpHandleSubmit(ev)}>Ghi lai</button>
             <button className='btn btn-danger' onClick={nhpHandleClose}>Dong</button>
+            
         </div>
+        </form>
+       </div>
     )
 }
